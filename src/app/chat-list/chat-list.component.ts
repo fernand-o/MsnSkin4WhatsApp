@@ -10,10 +10,19 @@ import { Chat } from '../chat.model';
 export class ChatListComponent implements OnInit {
   chats: Chat[];
 
-  constructor(private chatsService: ChatService) { }
+  constructor(private chatService: ChatService) { }
 
   ngOnInit() {
-    this.chats = this.chatsService.getChats();
+    this.chats = this.chatService.getChats();
+    this.chatService.chatsChanged.subscribe(
+      (e) => {
+        this.chats = e;
+      }
+    );
+  }
+
+  clearChats() {
+    this.chatService.setChats([]);
   }
 
 }

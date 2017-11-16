@@ -1,23 +1,17 @@
 import { Component } from '@angular/core';
 import { ChatService } from './chat.service';
 import { HostListener } from '@angular/core';
+import { CommunicationService } from './communication.service';
+import { WindowRef } from './windowref';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ChatService]
+  providers: [ChatService, WindowRef, CommunicationService]
 })
 export class AppComponent {
   title = 'app';
 
-  @HostListener('document.message', ['$event']) onMessageeReceived(e) {
-    console.log('document')
-    console.log(e)
-  }
-
-  @HostListener('window.message', ['$event']) onMessageReceived(e) {
-    console.log('window')
-    console.log(e)
-  }
+  constructor(private com: CommunicationService, private chat: ChatService) { }
 }
