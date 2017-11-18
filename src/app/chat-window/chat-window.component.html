@@ -1,0 +1,20 @@
+<div class="container" *ngIf="chat != undefined">
+  <p>{{chat.name}}</p>
+  <div class="container">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let itemmessage of chat.messages">
+        <app-chat-message [message]="itemmessage"></app-chat-message>
+      </li>
+    </ul>
+    <form>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <input type="text" class="form-control" name="message" #msg>
+            <button type="button" (click)="sendMessage(msg)">send</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

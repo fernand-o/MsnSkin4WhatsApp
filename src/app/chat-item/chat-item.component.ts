@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Chat } from '../chat.model';
+import { ChatService } from '../chat.service';
 
 @Component({
   selector: 'app-chat-item',
@@ -9,10 +10,14 @@ import { Chat } from '../chat.model';
 export class ChatItemComponent implements OnInit {
   @Input() chat: Chat;
 
-  constructor() { }
+  constructor(private chatService: ChatService) { }
 
   ngOnInit() {
 
+  }
+
+  showMessages() {
+    this.chatService.setSelectedChat(this.chat);
   }
 
 }

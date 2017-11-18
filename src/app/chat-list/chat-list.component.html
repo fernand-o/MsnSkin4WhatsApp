@@ -1,2 +1,7 @@
-<app-chat-item *ngFor="let chatItem of chats" [chat]="chatItem"></app-chat-item>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let chatItem of chats">
+    <app-chat-item [chat]="chatItem"></app-chat-item>
+  </li>
+</ul>
+
 <button (click)="clearChats()">Clear</button>
